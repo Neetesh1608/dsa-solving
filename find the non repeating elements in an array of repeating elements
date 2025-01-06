@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+
+void findNonRepeatingElements(int arr[], int n) {
+    int xorResult = 0;
+    int x = 0, y = 0;
+
+
+    for (int i = 0; i < n; i++) {
+        xorResult ^= arr[i];
+    }
+
+    
+    int setBit = xorResult & ~(xorResult - 1);
+
+    
+    for (int i = 0; i < n; i++) {
+        if (arr[i] & setBit) {
+            x ^= arr[i]; 
+        } else {
+            y ^= arr[i]; 
+        }
+    }
+
+   
+    printf("The two non-repeating elements are: %d and %d\n", x, y);
+}
+
+int main() {
+    int arr[] = {4, 3, 7, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    findNonRepeatingElements(arr, n);
+
+    return 0;
+}
