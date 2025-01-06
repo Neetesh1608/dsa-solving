@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+
+int countSetBits(int n) {
+    int count = 0;
+    while (n) {
+        count += n & 1; 
+        n >>= 1;
+    }
+    return count;
+}
+
+
+int countBitsToFlip(int A, int B) {
+    int xorResult = A ^ B; 
+    return countSetBits(xorResult); 
+}
+
+int main() {
+    int A = 29; 
+    int B = 15; 
+    
+    int bitsToFlip = countBitsToFlip(A, B);
+    printf("Number of bits to flip to convert %d to %d: %d\n", A, B, bitsToFlip);
+    
+    return 0;
+}
