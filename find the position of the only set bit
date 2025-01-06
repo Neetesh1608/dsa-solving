@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int findSetBitPosition(int n) {
+    if (n == 0) return -1; // No set bits in 0
+    
+    int position = 1; 
+    
+  
+    while ((n & 1) == 0) {
+        n >>= 1; 
+        position++; 
+    }
+    
+    return position;    
+}
+
+int main() {
+    int n = 16; 
+    int position = findSetBitPosition(n);
+    if (position == -1) {
+        printf("No set bit found (input is 0).\n");
+    } else {
+        printf("The position of the only set bit is: %d\n", position);
+    }
+    
+    return 0;
+}
